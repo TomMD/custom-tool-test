@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" = "applicable" ] ; then
+if [ "$3" = "applicable" ] ; then
     echo "true"
 else
     printf '                          
