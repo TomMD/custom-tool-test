@@ -1,1 +1,1 @@
-customTools = [ "test.sh" ]
+customTools = [ "./test.sh" ]
