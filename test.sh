@@ -18,7 +18,7 @@ else
             "tnCodeLine": null,       \
             "tnProcedure": null,      \
             "tnPhase": "PhaseUnknown",\
-            "tnTool": "Infer"         \
+            "tnTool": { "tag" :  "CustomTool", "contents" : "test.sh" }  \
           }                           \
         ],                            \
         null                          \
