@@ -3,25 +3,29 @@
 if [ "$3" = "applicable" ] ; then
     echo "true"
 else
-    printf '                          
-    {                                 
-      "tag": "ToolSuccess",           
-      "contents": [                   
-        [                             
-          {                           
-            "tnType": "Type",         
-            "tnDesc": "Description",  
-            "tnFile": "File",         
-            "tnLine": 42,             
-            "tnColumn": null,         
-            "tnPatch": null,          
-            "tnCodeLine": null,       
-            "tnProcedure": null,      
+    cd $1
+    outputline=$(grep 'XXX' * -R -n)
+    file=$(echo $outputline | sed 's/:.*//')
+    line=$(echo $outputline | sed 's/$file://' | sed 's/:.*//')
+    printf $'
+    {
+      "tag": "ToolSuccess",
+      "contents": [
+        [
+          {
+            "tnType": "XXX",
+            "tnDesc": "Hot damn, you have an XXX mark in the code sonny!",
+            "tnFile": "$file",
+            "tnLine": $line,
+            "tnColumn": null,
+            "tnPatch": null,
+            "tnCodeLine": null,
+            "tnProcedure": null,
             "tnPhase": "PhaseUnknown",
             "tnTool": { "tag" :  "CustomTool", "contents" : "test.sh" }
-          }                           
-        ],                            
-        null                          
-      ]                               
+          }
+        ],
+        null
+      ]
     }'
 fi
