@@ -6,26 +6,29 @@ else
     cd $1
     outputline=$(grep 'XXX' * -R -n)
     file=$(echo $outputline | sed 's/:.*//')
-    line=$(echo $outputline | sed 's/$file://' | sed 's/:.*//')
-    printf $'
+    line=$(echo $outputline | sed 's/.*:\([0-9]*\):.*/\1/')
+    echo $outputline
+    echo $file
+    echo $line
+    printf "
     {
-      "tag": "ToolSuccess",
-      "contents": [
+      \"tag\": \"ToolSuccess\",
+      \"contents\": [
         [
           {
-            "tnType": "XXX",
-            "tnDesc": "Hot damn, you have an XXX mark in the code sonny!",
-            "tnFile": "$file",
-            "tnLine": $line,
-            "tnColumn": null,
-            "tnPatch": null,
-            "tnCodeLine": null,
-            "tnProcedure": null,
-            "tnPhase": "PhaseUnknown",
-            "tnTool": { "tag" :  "CustomTool", "contents" : "test.sh" }
+            \"tnType\": \"XXX\",
+            \"tnDesc\": \"Hot damn, you have an XXX mark in the code sonny!\",
+            \"tnFile\": \"$file\",
+            \"tnLine\": $line,
+            \"tnColumn\": null,
+            \"tnPatch\": null,
+            \"tnCodeLine\": null,
+            \"tnProcedure\": null,
+            \"tnPhase\": \"PhaseUnknown\",
+            \"tnTool\": { \"tag\" :  \"CustomTool\", \"contents\" : \"test.sh\" }
           }
         ],
         null
       ]
-    }'
+    }"
 fi
