@@ -7,7 +7,6 @@ else
     outputline=$(grep 'XXX' * -R -n --exclude=test.sh)
     file=$(echo $outputline | sed 's/:.*//')
     line=$(echo $outputline | sed 's/.*:\([0-9]*\):.*/\1/')
-    echo $outputline
     printf "
     {
       \"tag\": \"ToolSuccess\",
