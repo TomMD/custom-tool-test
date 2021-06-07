@@ -2,6 +2,8 @@
 
 if [ "$3" = "applicable" ] ; then
     echo "true"
+elif [ "$3" = "version ] ; then
+    echo 1
 else
     cd $1
     outputline=$(grep 'XXX' * -R -n --exclude=test.sh)
